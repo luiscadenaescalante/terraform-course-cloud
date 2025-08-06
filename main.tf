@@ -10,7 +10,7 @@ terraform {
     organization = "terraform-demo-practice"
 
     workspaces {
-      name = "terraform-course-cloud"
+      name = "terraform-course-cloud-2"
     }
   }
 }
