@@ -5,14 +5,6 @@ terraform {
       version = "~> 3.0"
     }
   }
-
-  backend "remote" {
-    organization = "terraform-demo-practice"
-
-    workspaces {
-      name = "terraform-course-cloud-2"
-    }
-  }
 }
 
 provider "azurerm" {
