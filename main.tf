@@ -1,15 +1,31 @@
-resource "null_resource" "ambiente" {
-  provisioner "local-exec" {
-    command = "echo Estoy en el workspace ${terraform.workspace}"
-  }
-}
-
 terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0"
+    }
+  }
+
   backend "remote" {
     organization = "terraform-demo-practice"
 
     workspaces {
       name = "terraform-course-cloud"
     }
+  }
+}
+
+provider "azurerm" {
+  features {}
+  subscription_id = var.subscription_id
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
+}
+
+# Dummy resource (not real)
+resource "null_resource" "placeholder" {
+  provisioner "local-exec" {
+    command = "echo Terraform Cloud demo workspace: ${terraform.workspace}"
   }
 }
